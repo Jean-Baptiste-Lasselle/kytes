@@ -37,6 +37,7 @@ composant JCA, encapsulé dans un conteneur docker embarquant une distribution W
 * Il vous appartient ensuite de renseigner différentes informations quant à ce nouvel élément, et à ajouter ses liens physiques avec les autres éléments de la toplogie.
 * `kytes-aerodyne` vous permet de bootstraper une environnement eclispe complet pour développer une recette kickstart, pour chaque nouvel élément physique pour lequel le PXE booting est possible. Cela permet à `kytes-aerodyne` de proposer un DRP "bare-metal".
 
+
 `kytes-aerodyne` fait automatiquement apparaître dans le schéma de la toplogie afficher (comme un noeud isolé, non relié à aucun élément) 
 
 Pour chaque machine inventoriée, `kytes-aerodyne` vous propose de litégrer dans le schéma de la topologie de l'infrastructure
