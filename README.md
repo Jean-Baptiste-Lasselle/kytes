@@ -20,22 +20,23 @@ Kytes aura la capacité à se déployer:
 
 DAns les deux cas, l'infrastructure provisionnée au départ, devra être "enrollée".
 
-Les deux premières fonctions qui seront assurées par `isocahedron`, seront donc:
+Les deux premières fonctions qui seront assurées par `kytes-aerodyne`, seront donc:
 * l' "enrollement" des machines physiques.
 * la gestion de l'inventaire des machines physiques.
 
-Ces fonctions seront assurées par un composant nommé `isocahedron`, dont la première version reposera sur le fonctionnement d'un
+Ces fonctions seront assurées par un composant nommé `kytes-aerodyne`, dont la première version reposera sur le fonctionnement d'un
 composant JCA, encapsulé dans un conteneur docker embarquant une distribution Wildfly/JBossEAP minimale.
 
 * Toutes les machines physiques doivent être au préalable configurées en PXE boot +  Wake On LAN (beaucoup plus confortable pour la conception de la configuration kickstart)
-* `isocahedron` détecte une nouvelle machine physique dès sa séquence d'amorçage, à condition qu'elle soit dans le même réseau physique: connectée à la même interface physique routeur.
-* `isocahedron` propose un dashboard comprenant un onglet "topologie de l'infrastructure": il s'agit d'un schéma que vous pouvez éditer, dans lequel vous pouvez représenter tous les éléments matériels de l'infrastructure à votre ddisposition. Vous pouvez éditer ce dessin (le dashboard est basé sur D3JS), pour ajouter / supprimer / modifier des éléments matériels à votre schéma.
+* `kytes-aerodyne` détecte une nouvelle machine physique dès sa séquence d'amorçage, à condition qu'elle soit dans le même réseau physique: connectée à la même interface physique routeur.
+* `kytes-aerodyne` détecte une nouvelle machine physique et l'identifie par une ADRESSE MAC, et/ou device UUID.
+* `kytes-aerodyne` propose un dashboard comprenant un onglet "topologie de l'infrastructure": il s'agit d'un schéma que vous pouvez éditer, dans lequel vous pouvez représenter tous les éléments matériels de l'infrastructure à votre ddisposition. Vous pouvez éditer ce dessin (le dashboard est basé sur D3JS), pour ajouter / supprimer / modifier des éléments matériels à votre schéma.
 * Si l'élément matériel que vous avez ajouté dans la topologie est détectable par isocaedron, par exemple s'il s'agit d'un serveur, ou d'une simple machine de dev, alors cet élément apparaîtra grsé tant qu'il n'est pas détecté.
 * Lorsqu'il est détecté, il n'est plus grisé.
-* Réciproquement, lorqsque `isocahedron` détecte un nouvel élément matériel, mais que vosu ne l'aviez pas encore représenté dans le schéma de la topologie, alors un nouvel élément matériel appraît automatiquement.
-* Il vous appratient ensuite de renseigner différentes informatiosn quant à ce nouvel élément, et à ajouter ses liens physiques avec les autres éléments de la toplogie.
-*  `isocahedron` vosu permet de bootstraper une environnement eclispe complet pour développer une recette kickstart
-`isocahedron` détecte une nouvelle machine physique et l'invetorie sur la base d'un de ses ADRESSES MAC, et/ou device UUID.
-`isocahedron` fait automatiquement apparaître dans le schéma de la toplogie afficher (comme un noeud isolé, non relié à aucun élément) 
+* Réciproquement, lorqsque `kytes-aerodyne` détecte un nouvel élément matériel, mais que vous ne l'aviez pas encore ajouté dans le schéma de la topologie, alors un nouvel élément matériel appraît automatiquement.
+* Il vous appartient ensuite de renseigner différentes informations quant à ce nouvel élément, et à ajouter ses liens physiques avec les autres éléments de la toplogie.
+* `kytes-aerodyne` vous permet de bootstraper une environnement eclispe complet pour développer une recette kickstart, pour chaque nouvel élément physique pour lequel le PXE booting est possible. Cela permet à `kytes-aerodyne` de proposer un DRP "bare-metal".
 
-Pour chaque machine inventoriée, `isocahedron` vous propose de litégrer dans le schéma de la topologie de l'infrastructure
+`kytes-aerodyne` fait automatiquement apparaître dans le schéma de la toplogie afficher (comme un noeud isolé, non relié à aucun élément) 
+
+Pour chaque machine inventoriée, `kytes-aerodyne` vous propose de litégrer dans le schéma de la topologie de l'infrastructure
