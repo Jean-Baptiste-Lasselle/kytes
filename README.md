@@ -1,6 +1,11 @@
+# Information
+
+This repo is under construction for the first release planned for May, the 1st of 2018.
+First release code name will be "Hawking", as an aurevoir to the lately disappeared Stephen Hawking.
+
 # Kytes
 
-It's That I like going up in the air with the clouds, but I so like my feet right there on the ground, here.
+It's That I like going up in the air with the clouds, but I also like my feet right there on the ground, here.
 
 Kytes is a software factory exprience, with full devops behavior, and a fullstack approach.
 
@@ -8,9 +13,16 @@ A full devops behavior: Kytes is designed for devops professionals, as a tool.
 A fullstack approach: If it takes modifying a bootloader to make an application even better, let's make it possible as easily as an 'mvn update'
 And What about pulling A linux kernel module into a Vert-x Java Pipeline?
 
-This software factory project began March, 2018.
+This software factory project began March, 2018, and will be twin-develoed: From zero day on, Kyte will be implemented both in Java, and Scala language.
+This "twin-implementation" is an experience to put design patterns under pressure of the following requirements:
+* [Reactive Applications Requirements](https://www.reactivemanifesto.org)
+* Ability to deploy to Kubernetes.
+* Ability to deploy to Openstack (through heat).
+* Ability to deploy using chef.io (release management of chef.io cookbooks, ansible playbooks).
+<!-- * Ability to deploy to GCP. -->
+<!-- * Ability to deploy to AWS. -->
 
-
+# kytes-aerodyne
 Une usine logicielle est un infrastructure IT.
 Et comme toute infrastructure IT, elle se construit en commençant par le matériel.
 
@@ -18,7 +30,7 @@ Kytes aura la capacité à se déployer:
 * à partir d'une infrastructure "bare-metal": à partir de machines "nues", n'ayant aucun OS installé.
 * à partir d'une infrastructure provisionnée par une offre IAAS privée (Openstack, openshift, un simple petit VirutalBox installé sur un gros PC...), publique (GCP, AWS), ou hybride.
 
-DAns les deux cas, l'infrastructure provisionnée au départ, devra être "enrollée".
+Dans les deux cas, l'infrastructure provisionnée au départ, devra être "enrollée".
 
 Les deux premières fonctions qui seront assurées par `kytes-aerodyne`, seront donc:
 * l' "enrollement" des machines physiques.
@@ -41,3 +53,40 @@ composant JCA, encapsulé dans un conteneur docker embarquant une distribution W
 `kytes-aerodyne` fait automatiquement apparaître dans le schéma de la toplogie afficher (comme un noeud isolé, non relié à aucun élément) 
 
 Pour chaque machine inventoriée, `kytes-aerodyne` vous propose de litégrer dans le schéma de la topologie de l'infrastructure
+
+# kytes-boutique
+
+Vous permet de gérer la communication extérieure "on a per-product basis".
+Une des fonctions basiques est la possibilité de gérer le site web du projet:
+* [niveau application] comme une application web scala, en gérant son code source et son pipeline complet de développement
+* [niveau comunication] comme une plateforme de communication, surlaquelle vous pouvez publier du contenu. Pour publier ce contenu, vous implémentez votre propre "Publisher", ou utilisez un des "Publisher" standards fournis avec la distribution de `kytes-boutique`
+
+Une autre ensemble de fonctionnalités envisagé concerne la gestion des réseaux sociaux utilisés comme canaux de communication publics pour le projet.
+Dans cet ensemble certaines fonctions permettront d'analyser les données collectées sur les réseaux sociaux, et les autres permettront de publier via les canaux de communication publics pour le projet.
+
+
+
+###      `kyte-boutique` 
+ 
+* fera usage de JGit et de la [REST API CLIENT HEROKU]:
+      https://devcenter.heroku.com/articles/platform-api-quickstart
+ 
+* Pour automatiser le process  des pipelines aboutissant chez Heroku.
+ 
+* tentative plantée d'implémentation en Java que je peux regarder pour apprendre des erreurs: https://github.com/heroku/direct-to-heroku-client-java
+ 
+* Note intéressante: avec cette REST API Heroku, je vais donc pouvoir interooger la "marketpplace Heroku", afin de proposer de l'autocomplétion de Procfile. Mais aussi je vais pouvoir vérifier, au déploiement, que les add-ons spécifiés dans le PRocfile sont bien tous existants dans la marketplace heroku).
+ 
+ 
+* Un process standard serait:
+ * 1. (composants: ide-service-manager) On modifie le code source de l'application qui constitue le site web du projet							
+ * 2. (composants: source-code-manager) On commit & push sur le repo de référence de versionning du code source de l'application				
+ * 3. (composants: quality-manager) On exécute tous les tests statiques: ceux qui peuvent être exécutés sans exécution de l'application, comme des tests JUnit.
+ * 4. (composants: packaging-manager) On build l'application site web
+ * 5. (composants: deployment-manager) On déploie l'application site web dans la cible de déploiement
+ * 6. (composants: quality-manager) On exécute tous les tests à l'exécution: Ce sont les tests qui nécessitent un déploiement de l'application dans une cible de déploiement, comme les tests d'intégration, ou les UAT.
+   
+   
+ 
+* Doc de la REST API Heroku: https://devcenter.heroku.com/articles/platform-api-quickstart 
+ 
