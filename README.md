@@ -220,19 +220,34 @@ De plus lorsqu'un développeur fullstack voudra changer la recette de provisionn
 ## kytes-pipeline-deployment-target-manager
 The above listed features are those of the `kytes-pipeline-deployment-target-manager`, but also happen to
 be the `kytes-iaas-api` main features:
-### it can spawn the deployment target
-This service asks for, and gets an infrastructure from [`kytes-iaas`](#kytes-iaas), and then applies [`deployment target provisioning recipe`] on that infrastructure.
-When finished with that work the deployment target of the pipeline is ready to receive deployments.
-### it can monitor the pipeline's running deployment target
+	### it can spawn the deployment target
+	This service asks for, and gets an infrastructure from [`kytes-iaas`](#kytes-iaas), and then applies [`deployment target provisioning recipe`] on that infrastructure.
+	When finished with that work the deployment target of the pipeline is ready to receive deployments.
+	### it can monitor the pipeline's running deployment target, offering:
 
-Offering:
+	 - Monitoring from system to business level with things like SLF4J / Logstash / Kibana 
+	 - Visualization of monitoring data on the main Kytes PMO/Architect/developer dashboards, 
+	 - Possibility to stream all monitoring data flow to an external monitoring system. (with log routing techniques)
+	### it can snpashot/restore states of the deployment target
+	such as what you can do with glance in openstack
 
- - Monitoring from system to business level with things like SLF4J / Logstash / Kibana 
- - Visualization of monitoring data on the main Kytes PMO/Architect/developer dashboards, 
- - Possibility to stream all monitoring data flow to an external monitoring system. (with log routing techniques)
+Just imagine all those tasks today, described in yuir project's pom.xml file:
+Imagine that the kytes-pipeline takes your big pom.xml (or parent pom.xml, with children pom.xml's), and copies it to 25 different Docker containers (or Kubernetes services)
+Then imagine every one of those 25 guys, do each one of the tasks discribed in your huge pom.xml.
+It's how Kytes builds up its pipelines, making them scalable: You can easily with just a server or two, power a pipeline with the work of thousands of containers...
+With this principle of turning a pipeline into a micro-service bouquet, Kytes makes you well think your build process, from a fullstack point of view:
 
-### it can snpashot/restore states of the deployment target
-such as what you can do with glance in openstack
+
+Kytes lets you jump on any dependency of your app, regardless of which recipe this dependency is deployed with.
+The main mentioned recipes are [`deployment target provisioning recipe`], or with the [`deployment recipe`].
+<!--
+Those two recipes may be split into sub-recipes, and when such a split is conducted, it results in either a paralell, or 
+sequential execution. Any execution  whether it be paralell or sequential, begins with an input, and ends with an output.
+Thus, when splitting a recipe, you split into chained executions, each execution being either paralell, or sequential.
+-->
+Kytes will offer simple and very handy GUI tools (and Kytes Ground Control API equivalent features) to split 
+recipes into subrecipes, so as to obtain a micro-service definition.
+
 
 
 
