@@ -38,7 +38,37 @@ the property management system for the infrastructures of all tenants in kytes.
 
  
 
-# kytes-aerodyne
+
+ 
+# kytes-infrastructure-manager
+
+A software factory, and even more a solution to manage software factories, sits on a hardawre infrastructure.
+From another completely different point of view, hardware can be a direct dependency of a piece of software.
+In the below documentation for Kytes, I use a small specific terminology:
+* I call here below a "dependency", anything you might call a piece of software, whether it be A U-boot version, A Linux Kernel Module, or a Java Vert-X component.
+* Let `chantilly`, be such a piece of software: I consider `chantilly` is a dependency of itself: `chantilly` is a dependency of `chantilly`, for indeed, you need `chantilly` to deploy `chantilly`.
+* Let `chantilly`, be a dependency: I say a dependency of `chantilly` is of degree zero, if it is directly referenced (mentioned) in the dependency list of `chantilly`, and cannot be infered from another dependency mentioned in the same list.
+* Let `chantilly`, be a dependency: For every positive & not null integer K, I say a dependency `D` of `chantilly` is of degree K + 1, if and only if `D` is a dependency of degree zero of dependency of degree K of `chantilly`. 
+* Let `chantilly`, be a dependency: The dependencies of degree zero of `chantilly` are:
+ * `chantilly` 's source code,
+ * `chantilly` deployments targets provisioning recipes,
+ * `chantilly` deployment recipes
+ 
+Piece of cake, ain't it?
+
+## kytes-aerodyne
+
+ 
+`kytes-aerodyne` is Kytes component responsible for managing Kytes' own infrastructure:
+ * You install Kytes on a small machine,
+ * You start Kytes, it is said to be on bootstrap state. In that state, you cannot start using Kytes, it needs an infrastructure (a physical) to play with.
+ * You give Kytes an infrastructure to play with (I'll explain how to do that). That infrastructure might be reduced to the intiial machine you installed Kytes on.
+ * then Kytes uses that infrastructure to fully scale out to the entire infrastructure,
+ * Kytes aims at making you able draw all you can from the machines that you've got (until the boss answers yes for more pods on GCP),  while what you're doing on that infrastructure is developing / managing development of an application.
+ * Kytes orginated because I wanted real full bare metal Backup Restore procedure at home, for my personal development & experimental environments. Meaning I wanted a on clic backup to a brand new hardware machine. And hardware expenses reduction (know what you got, know what you need, buy what you need)
+
+ 
+ 
 Une usine logicielle est un infrastructure IT.
 Et comme toute infrastructure IT, elle se construit en commençant par le matériel.
 
@@ -70,18 +100,8 @@ composant JCA, encapsulé dans un conteneur docker embarquant une distribution W
 
 Pour chaque machine inventoriée, `kytes-aerodyne` vous propose de l'intégrer dans le schéma de la topologie de l'infrastructure
 
-`kytes-aerodyne` is Kytes component responsible for managing Kytes' own infrastructure:
- * You install Kytes on a small machine,
- * You start Kytes, it is said to be on bootstrap state. In that state, you cannot start using Kytes, it needs an infrastructure (a physical) to play with.
- * You give Kytes an infrastructure to play with (I'll explain how to do that). That infrastructure might be reduced to the intiial machine you installed Kytes on.
- * then Kytes uses that infrastructure to fully scale out to the entire infrastructure,
- * Kytes aims at making you able draw all you can from the machines that you've got (until the boss answers yes for more pods on GCP),  while what you're doing on that infrastructure is developing / managing development of an application.
- * Kytes orginated because I wanted real full bare metal Backup Restore procedure at home, for my personal development & experimental environments. Meaning I wanted a on clic backup to a brand new hardware machine. And hardware expenses reduction (know what you got, know what you need, buy what you need)
 
- 
- 
 ## kytes-iaas-manager
-
 
 `kytes-iaas-manager` is responsible for setting up (provisioning) the `kytes-iaas-provider` based on configuration.
 `kytes-iaas-manager` is also responsible for oprating the `kytes-iaas-provider`:
@@ -92,7 +112,7 @@ Pour chaque machine inventoriée, `kytes-aerodyne` vous propose de l'intégrer d
  * DRP (with automatic backups scheduling, and automatic restore procedures),
  * managing users (CRUD opeartions on users)
  
-All in all, `kytes-iaas-manager` does infrastructure management, Kytes' own infrastructure management, which why it is part of `kytes-aerodyne`
+All in all, `kytes-iaas-manager` does infrastructure management, Kytes' own infrastructure management, which why it is part of `kytes-infrastructure-manager`
 
 
 # kytes-iaas
@@ -152,9 +172,9 @@ In a Kytes pipeline, the git repo used for source code versionning management is
 
 * 
 
-## kytes-ide-service
-## kytes-scm-service 
-## kytes-qa-service
+## kytes-pipeline-ide
+## kytes-pipeline-scm
+## kytes-pipeline-qa
 This guy can run tests with JMeter, Jenkins, Maven Junit, Netflix' Simian army, with full metrics reporting management.
 He spawns you a quality manager for each of your product lines.
 He:
@@ -168,9 +188,10 @@ He:
  * provision recipe for the test deployment target (which is a test parameter for load testing your application),
  * provision recipe for all the qa tools (which will run and compute the tests),
  * definition, configuration, and versionning (At every Build, Metrics set configuration is commited & pushed to a git repo standing for Quality management history) of the metrics used to asses quality of your application. Imagine there configuration scripts for your private elastic search installation...
-## kytes-packaging-service
+## kytes-pipeline-packaging
 This service does all the packaging work.
-## kytes-deployment-service
+any pafckaging artefact is published to `kytes-blown`, on a proper repository ( a private docker hub, a maven repository such as artifactory)
+## kytes-pipeline-deployment
 This service does all the application's deployment work.
 De plus lorsqu'un développeur fullstack voudra changer la recette de provisionning d'une cible de déploiement, ou en créer une nouvelle, 
 
