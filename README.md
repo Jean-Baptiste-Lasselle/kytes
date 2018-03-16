@@ -1,6 +1,6 @@
 # Information
 
-This repo is under construction for the first release planned for May, the 1st of 2018.
+This repo is under construction for the first release scheduled May, the 1st of 2018.
 First release code name will be "Hawking", as an aurevoir to the lately disappeared Stephen Hawking.
 
 # Kytes
