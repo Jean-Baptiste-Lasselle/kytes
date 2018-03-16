@@ -68,7 +68,74 @@ composant JCA, encapsulé dans un conteneur docker embarquant une distribution W
 
 `kytes-aerodyne` fait automatiquement apparaître dans le schéma de la toplogie afficher (comme un noeud isolé, non relié à aucun élément) 
 
-Pour chaque machine inventoriée, `kytes-aerodyne` vous propose de litégrer dans le schéma de la topologie de l'infrastructure
+Pour chaque machine inventoriée, `kytes-aerodyne` vous propose de l'intégrer dans le schéma de la topologie de l'infrastructure
+
+# kytes-iaas
+
+Une fois que Kytes a pris le contrôle de l'infrastruture physique que vous avez mis à sa disposition, `kytes-iaas` met
+à la disposition des aux autres composants Kytes, une offre IAAS:
+
+À chaque fois qu'une demande de provisionning d'une infrastructure sera émise par un composant Kytes, c'est  `kytes-iaas` qui répondra à la demande.
+Ce sera par exemple le cas, lorsqu'une cible de déploiement sera conçue et construite pour une ligne de porduction 
+
+# kytes-provisioner
+
+Ce composant peut-être "pluggué"; d'habitude, je "plug" Ansible.
+
+`kytes-provisioner` is there to realise all provisioning operations on infrastructures provvided by [`kytes-iaas`](#kytes-iaas)
+I may have fun implementing that myself, but basically what I want to do with `kytes-provisioner`, is exactly what [ansible](http://docs.ansible.com/ansible) or [chef.io](https://www.chef.io/) can do, really well.
+So What I'll start with implementing Kytes so has to be able to define a chef.io or ansible installation, as a provisioning provider for `kytes-provisioner`.
+You may plug all chef.io, ansible, and my own implementations, as provisioning providers to provide fullstack provisioning capability.
+And you may write recipes for chef.io, ansible and other provisioning tools to publish as deployment assets offered to your application users.
+
+# kytes-pipelines
+
+As Kytes pipelines are polyglote by design , all the below listed pipeline components are polyglotes by design.
+Kytes want a developer to be able to feel he 's not switching projects or setting up anything at all, to jump
+from one dependency, to another, from a root project.
+By Jumping from one dependency, to another, Kytes means:
+* automatic loading of the source code of the dependency into an ide-project inside your IDE, without restart, 
+* automatic loading of all IDE tooling to switch to a "language-oriented IDE perspective" : meaning Kytes re-confgures your IDE so that you have programming language specific IDE capabilities, according the dependency' programming language. For example, you have automatic grammar checks with error higlighting and fix tips, code snippets management, source code files format management, smart-auto-completion, refactoring, searching the source code capabilities.
+* automatic creation of a kytes pipeline for the dependency if the dependency has not yet one inside Kytes:
+
+You're using Kytes, so your developing at least one application. Let's call `chantilly`, that application.
+You're developing `chantilly` in Kytes, so you're doing that with at least one kytes pipeline.
+Since any Kytes pipeline has a "deployment target provisioning recipe", then, for any dependency of `chantilly`, there exists in Kytes at least
+one provisioning recipe, that can deploy that dependency: the "deployment target provisioning recipe" of the pipeline you use for `chantilly`.
+
+As long as no one in Kytes has "jumped" to a given dependency, there already exists a pipeline for that dependency, but it has no source code management, meaning it contains only "deployment recipe" and "deployment target provisioning recipe" for the dependency.
+Plus it is idle, meaning the "deployment recipe" and the "deployment target provisioning recipe" only are pointers to the "deployment recipe" and the "deployment target provisioning recipe" in an other pipeline, in which the dependency is used.
+When you jump on the dependency, you load the whole pipeline including:
+* ["build recipe"](##kytes-packaging-service)
+* "deployment target provisioning recipe", (used and owned by [`kytes-iaas`](#kytes-iaas) (utilisée et gérée par [`kytes-iaas`](#kytes-iaas))
+* "deployment recipe", (used and owned by [`kytes-provisioner`](#kytes-provisioner) (utilisée et gérée par [`kytes-provisioner`](#kytes-provisioner))
+
+In a Kytes pipeline, the git repo used for source code versionning management is called the dependency' source code versionning referential. ( le référentiel de versionning du code source de l'application).
+
+* 
+
+## kytes-ide-service
+## kytes-scm-service 
+## kytes-qa-service
+This guy can run tests with JMeter, Jenkins, Maven Junit, Netflix' Simian army, with full metrics reporting management.
+He spawns you a quality manager for each of your product lines.
+He:
+* spawns all the qa tools (servers like Jenkins, JMeter, ...)
+* runs the test against the soure code of your application.
+* aggregates, persists and process tests results, and releases an end Quality Assurance reporting, based on computed test results data.
+* Any user with `qa` role on a production line, may also load the production line Quality Assurance Book, which contains every thing that affects Quality Assurance for the production line.
+  In the Quality Assurance Book, you may find (edit and publish to [`kytes-blown`](#kytes-blown)) stuff like:
+ * JUnit tests (a java projects source code),
+ * Jenkins files, 
+ * provision recipe for the test deployment target (which is a test parameter for load testing your application),
+ * provision recipe for all the qa tools (which will run and compute the tests),
+ * definition, configuration, and versionning (At every Build, Metrics set configuration is commited & pushed to a git repo standing for Quality management history) of the metrics used to asses quality of your application. Imagine there configuration scripts for your private elastic search installation...
+## kytes-packaging-service
+This service does all the packaging work.
+
+
+De plus lorsqu'un développeur fullstack voudra changer la recette de provisionning d'une cible de déploiement, ou en créer une nouvelle, 
+
 
 # kytes-blown
 
