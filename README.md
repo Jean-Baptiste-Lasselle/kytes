@@ -151,25 +151,28 @@ And you may write recipes for chef.io, ansible and other provisioning tools to p
 
 # kytes-pipelines
 
-As Kytes pipelines are polyglote by design , all the below listed pipeline components are polyglotes by design.
-Kytes want a developer to be able to feel he 's not switching projects or setting up anything at all, to jump
-from one dependency, to another, from a root project.
+As Kytes pipelines are polyglote by design, and all the below listed pipeline components are polyglotes by design.
+Kytes wants a developer to be able to feel he's still on the same project, while he jumps
+from one dependency, to another, starting from a root project.* (the rpoject he 's working on).
+
 By Jumping from one dependency, to another, Kytes means:
-* automatic loading of the source code of the dependency into an ide-project inside your IDE, without restart, 
+* automatic loading of the source code of the dependency into an ide-project inside your IDE (like importing maven projects inside eclipse), without restart, 
 * automatic loading of all IDE tooling to switch to a "language-oriented IDE perspective" : meaning Kytes re-confgures your IDE so that you have programming language specific IDE capabilities, according the dependency' programming language. For example, you have automatic grammar checks with error higlighting and fix tips, code snippets management, source code files format management, smart-auto-completion, refactoring, searching the source code capabilities.
 * automatic creation of a kytes pipeline for the dependency if the dependency has not yet one inside Kytes:
 
-You're using Kytes, so your developing at least one application. Let's call `chantilly`, that application.
-You're developing `chantilly` in Kytes, so you're doing that with at least one kytes pipeline.
-Since any Kytes pipeline has a "deployment target provisioning recipe", then, for any dependency of `chantilly`, there exists in Kytes at least
-one provisioning recipe, that can deploy that dependency: the "deployment target provisioning recipe" of the pipeline you use for `chantilly`.
+          You're using Kytes, so your developing at least one application. Let's call `chantilly`, that application.
+          You're developing `chantilly` in Kytes, so you're doing that with at least one kytes pipeline.
+          Since any Kytes pipeline has a "deployment target provisioning recipe", then, for any dependency of `chantilly`, there exists in Kytes at least
+          one provisioning recipe, that can deploy that dependency: the "deployment target provisioning recipe" of the pipeline you use for `chantilly`.
 
-As long as no one in Kytes has "jumped" to a given dependency, there already exists a pipeline for that dependency, but it has no source code management, meaning it contains only "deployment recipe" and "deployment target provisioning recipe" for the dependency.
-Plus it is idle, meaning the "deployment recipe" and the "deployment target provisioning recipe" only are pointers to the "deployment recipe" and the "deployment target provisioning recipe" in an other pipeline, in which the dependency is used.
+As long as the developer has not "jumped" to a given dependency, there already exists a pipeline for that dependency, but it has no source code management, meaning it contains only "deployment recipe" and "deployment target provisioning recipe" for the dependency.
+Plus this default pipeline is idle, meaning the "deployment recipe" and the "deployment target provisioning recipe" only are pointers to the "deployment recipe" and the "deployment target provisioning recipe" of  another pipeline, in which the dependency is used.
 When you jump on the dependency, you load the whole pipeline including:
-* ["build recipe"](##kytes-packaging-service)
-* "deployment target provisioning recipe", (used and owned by [`kytes-iaas`](#kytes-iaas) (utilisée et gérée par [`kytes-iaas`](#kytes-iaas))
-* "deployment recipe", (used and owned by [`kytes-provisioner`](#kytes-provisioner) (utilisée et gérée par [`kytes-provisioner`](#kytes-provisioner))
+
+* [`application source code`], used by [`kytes-pipeline-ide`](##kytes-pipeline-ide), and owned by [the scm service](##kytes-pipeline-scm)
+* [`build recipe`], used and owned by [`kytes-pipeline-packager`](##kytes-pipeline-packager)
+* [`deployment target provisioning recipe`], (used and owned by [`kytes-iaas`](#kytes-iaas)) (utilisée et gérée par [`kytes-iaas`](#kytes-iaas))
+* ["deployment recipe"], (used and owned by [`kytes-provisioner`](#kytes-provisioner) (utilisée et gérée par [`kytes-provisioner`](#kytes-provisioner))
 
 In a Kytes pipeline, the git repo used for source code versionning management is called the dependency' source code versionning referential. ( le référentiel de versionning du code source de l'application).
 
@@ -178,7 +181,7 @@ In a Kytes pipeline, the git repo used for source code versionning management is
 ## kytes-pipeline-ide
 ## kytes-pipeline-scm
 ## kytes-pipeline-qa
-This guy can run tests with JMeter, Jenkins, Maven Junit, Netflix' Simian army, with full metrics reporting management.
+This guy can run tests and analysis with Fossology, Checkstyle, JMeter, Jenkins, Junit (and al friends and cousins mockitos), Netflix' Simian army, with full metrics reporting management.
 He spawns you a quality manager for each of your product lines.
 He:
 * spawns all the qa tools (servers like Jenkins, JMeter, ...)
@@ -191,12 +194,29 @@ He:
  * provision recipe for the test deployment target (which is a test parameter for load testing your application),
  * provision recipe for all the qa tools (which will run and compute the tests),
  * definition, configuration, and versionning (At every Build, Metrics set configuration is commited & pushed to a git repo standing for Quality management history) of the metrics used to asses quality of your application. Imagine there configuration scripts for your private elastic search installation...
-## kytes-pipeline-packaging
+## kytes-pipeline-packager
 This service does all the packaging work.
 any pafckaging artefact is published to `kytes-blown`, on a proper repository ( a private docker hub, a maven repository such as artifactory)
-## kytes-pipeline-deployment
+## kytes-pipeline-deployer
 This service does all the application's deployment work.
 De plus lorsqu'un développeur fullstack voudra changer la recette de provisionning d'une cible de déploiement, ou en créer une nouvelle, 
+## kytes-pipeline-deployment-target-manager
+The above listed features are those of the `kytes-pipeline-deployment-target-manager`, but also happen to
+be the `kytes-iaas-api` main features:
+### it can spawn the deployment target
+This service asks for, and gets an infrastructure from [`kytes-iaas`](#kytes-iaas), and then applies [`deployment target provisioning recipe`] on that infrastructure.
+When finished with that work the deployment target of the pipeline is ready to receive deployments.
+### it can monitor the pipeline's running deployment target
+
+Offering:
+
+ - Monitoring from system to business level with things like SLF4J / Logstash / Kibana 
+ - Visualization of monitoring data on the main Kytes PMO/Architect/developer dashboards, 
+ - Possibility to stream all monitoring data flow to an external monitoring system. (with log routing techniques)
+ 
+### it can snpashot/restore states of the deployment target
+such as what you can do with glance in openstack
+
 
 
 # kytes-blown
