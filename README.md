@@ -78,6 +78,30 @@ Une fois que Kytes a pris le contrôle de l'infrastruture physique que vous avez
 À chaque fois qu'une demande de provisionning d'une infrastructure sera émise par un composant Kytes, c'est  `kytes-iaas` qui répondra à la demande.
 Ce sera par exemple le cas, lorsqu'une cible de déploiement sera conçue et construite pour une ligne de porduction 
 
+## kytes-iaas-manager
+
+
+`kytes-iaas-manager` is responsible for setting up (provisioning ) the `kytes-iaas-provider` based on configuration.
+`kytes-iaas-manager` is responsible for operating the `kytes-iaas-provider` based on configuration:
+* managing all `kytes-iaas-provider` lifecycle :
+ * updates,
+ * upgrades,
+ * security,
+ * DRP (with automatic backups scheduling, and automatic restore procedures),
+ * managing users (CRUD opeartions on users)
+ 
+All in all, `kytes-iaas-manager` does infrastructure management, Kytes' own infrastructure management
+## kytes-iaas-provider
+
+Kytes acts with one IAAS provider. That provider may use hybrid cloud behind the scene, but it's still a one unique IAAS provider.
+
+The provider is the component that will offer IAAS service to all other components
+I'll have my own implementation, and instead of my little implementation, you may set a third party IAAS solution as the kytes-iaas-provider:
+* An Openstack Installation
+* An Openstack Installation with Kubernetes inside a tenant.
+* A Kubernetes Installation inside a couple of dumb VirutalBox VMs
+Plugin IAAS providers like that makes the `kytes-iaas-provider` an "API adapter": it will be implemented as such, exposing one REST API to all other Kytes components, which are not aware of all details of the IAAS provider. For insce, provisioning de deployement target 
+
 # kytes-provisioner
 
 Ce composant peut-être "pluggué"; d'habitude, je "plug" Ansible.
