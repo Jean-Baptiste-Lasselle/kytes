@@ -37,7 +37,21 @@ Just like today, office buildings are operated and split-rented to different com
 the property management system for the infrastructures of all tenants in kytes.
 
  
+# Kytes Ground Control
 
+##  Kytes Ground Control
+Kytes Ground Control controls everything that happens in Kytes. Actualy when any user realises an action, ha asks GRound Control to do it for him.
+Ground Control's therefore in charge of Access Control, as well as Identity management.
+
+##  Kytes Ground Contrl client
+
+Kytes offers a client, that works pretty mcuh like the Heroku client, meaning you can use it, starting by authenticating, and
+then you can command line manage your pipelines, applications development production lines, etc... It is called the 
+Kytes Ground Control Client, or Ground Control Client, or Kytes client, as you wish.
+Ground Control Exposes a RESTful API with which you can execute any combination of commands you may execute with the Kytes Ground Control Client.
+
+Kytes Ground Control client' authentication method may be configured in Kytes configuration, and 
+will support integration with OAuth2, SAML, and 2/3 other popular and robust authentication methods.
 
  
 # kytes-infrastructure-manager
@@ -179,6 +193,9 @@ In a Kytes pipeline, the git repo used for source code versionning management is
 * 
 
 ## kytes-pipeline-ide
+
+The Kytes clients exists as a maven plugin, and a m2e extension to use the Kytes plugin within eclipse.
+
 ## kytes-pipeline-scm
 ## kytes-pipeline-qa
 This guy can run tests and analysis with Fossology, Checkstyle, JMeter, Jenkins, Junit (and al friends and cousins mockitos), Netflix' Simian army, with full metrics reporting management.
@@ -213,7 +230,7 @@ Offering:
  - Monitoring from system to business level with things like SLF4J / Logstash / Kibana 
  - Visualization of monitoring data on the main Kytes PMO/Architect/developer dashboards, 
  - Possibility to stream all monitoring data flow to an external monitoring system. (with log routing techniques)
- 
+
 ### it can snpashot/restore states of the deployment target
 such as what you can do with glance in openstack
 
