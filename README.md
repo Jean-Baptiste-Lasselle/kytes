@@ -210,7 +210,7 @@ He:
   * Jenkins files, 
   * provision recipe for the test deployment targets (which is a test parameter for load testing your application),
   * provision recipe for all the qa tools which will run and compute the tests. This includes purchasing servers, containers, or kubern8s service at `kytes-iaas`, for qa tools provisioning 
-  * definition, configuration, and versionning (At every Build, Metrics set configuration is commited & pushed to a git repo standing for Quality management history) of the metrics used to asses quality of your application. Imagine there configuration scripts for your private elastic search installation...
+  * definition, configuration, and versionning of the metrics used to asses quality of your application.  At every Build, Metrics set configuration is commited & pushed to a git repo standing for Quality management versionning. Imagine there configuration scripts and custom modules for your private elastic search installation...
 ## kytes-pipeline-packager
 This service does all the packaging work.
 any pafckaging artefact is published to `kytes-blown`, on a proper repository ( a private docker hub, a maven repository such as artifactory)
@@ -299,12 +299,12 @@ canaux de communication publics pour le projet.
  
  
 * Un process standard serait:
- * 1. (composants: ide-service-manager) On modifie le code source de l'application qui constitue le site web du projet							
- * 2. (composants: source-code-manager) On commit & push sur le repo de référence de versionning du code source de l'application				
- * 3. (composants: quality-manager) On exécute tous les tests statiques: ceux qui peuvent être exécutés sans exécution de l'application, comme des tests JUnit.
- * 4. (composants: packaging-manager) On build l'application site web
- * 5. (composants: deployment-manager) On déploie l'application site web dans la cible de déploiement. Le déploiement comprend un commit & push du code source des opérations de déploiement, pour respecter le principe Infrastructure as code. Le code source des opérations de déploiements peut par exemple être constitués de scripts `/bin/bash`. Enfin, ce code source des oppérations de déploieemnts a des dépendances, comme le répertoire `stage` Scala, et ces dépendances, qui peuvent être binaires, sont déployées et disponibles dans `kyte-blown`
- * 6. (composants: quality-manager) On exécute tous les tests à l'exécution: Ce sont les tests qui nécessitent un déploiement de l'application dans une cible de déploiement, comme les tests d'intégration, ou les UAT.
+  * 1. (composants: ide-service-manager) On modifie le code source de l'application qui constitue le site web du projet							
+  * 2. (composants: source-code-manager) On commit & push sur le repo de référence de versionning du code source de l'application				
+  * 3. (composants: quality-manager) On exécute tous les tests statiques: ceux qui peuvent être exécutés sans exécution de l'application, comme des tests JUnit.
+  * 4. (composants: packaging-manager) On build l'application site web
+  * 5. (composants: deployment-manager) On déploie l'application site web dans la cible de déploiement. Le déploiement comprend un commit & push du code source des opérations de déploiement, pour respecter le principe Infrastructure as code. Le code source des opérations de déploiements peut par exemple être constitués de scripts `/bin/bash`. Enfin, ce code source des oppérations de déploieemnts a des dépendances, comme le répertoire `stage` Scala, et ces dépendances, qui peuvent être binaires, sont déployées et disponibles dans `kyte-blown`
+  * 6. (composants: quality-manager) On exécute tous les tests à l'exécution: Ce sont les tests qui nécessitent un déploiement de l'application dans une cible de déploiement, comme les tests d'intégration, ou les UAT.
    
    
  
