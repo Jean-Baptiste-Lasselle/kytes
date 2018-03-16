@@ -125,16 +125,19 @@ Ce sera par exemple le cas, lorsqu'une cible de déploiement sera conçue et con
 des serveurs JMeter Jenkins, etc.. pour faire les builds au sein d'un pipeline
 
 
-## kytes-iaas-provider
+## kytes-iaas providers
 
-Kytes acts with one IAAS provider. That provider may use hybrid cloud behind the scene, but it's still a one unique IAAS provider.
+`kytes-iaas` acts with one IAAS provider. That provider may use hybrid cloud behind the scene, but it's still a one unique IAAS provider.
+With this logic in mind, `kytes-iaas` will be implemented so as to provide a unified IAAS RESTful API thats uses multiple IAAS providers
 
-The provider is the component that will offer IAAS service to all other components
-I'll have my own implementation, and instead of my little implementation, you may set a third party IAAS solution as the kytes-iaas-provider:
+A `kytes-iaas` provider is a component that will offer IAAS service to all other components
+Kytes will provide a small implementation of a IAAS provider, but you may as well set a third party IAAS solution as a `kytes-iaas` provider:
+* A Vagrant installation
 * An Openstack Installation
-* An Openstack Installation with Kubernetes inside a tenant.
+* An Openstack Installation with Kubernetes inside a tenant
 * A Kubernetes Installation inside a couple of dumb VirutalBox VMs
-Plugin IAAS providers like that makes the `kytes-iaas-provider` an "API adapter": it will be implemented as such, exposing one REST API to all other Kytes components, which are not aware of all details of the IAAS provider. For insce, provisioning de deployement target 
+Pluging in IAAS providers like that makes the `kytes-iaas` provider an "API adapter": it will be implemented as such, translating the third party orchestration API into the `kytes-iaas-api` exposed to other Kytes componentsd
+That way other Kytes components, are not aware of the IAAS provider computing down there.
 
 # kytes-provisioner
 
