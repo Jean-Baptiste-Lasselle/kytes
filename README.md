@@ -260,12 +260,13 @@ recipes into subrecipes, so as to obtain a micro-service definition.
  * (N référentiels) le référentiel de chacune de ses recettes de provision d'une cible de déploiement, 
  * (P référentiels) le référentiel de versionning de chacune de ses recettes de déploiements. Chaque recette de déploiement est associée à une version d'une recette de provision d'une cible de déploiement,
  
-Considérons par exemple, Une ligne de production mise en place et gérée par `Kytes`, pour un produit.
+Considérons par exemple une ligne de production mise en place et gérée par `Kytes`, pour un produit.
+
 Cette ligne de production possède un "univers de dépendances", et dans cet univers, l'on a des dépendances utilisées:
  * par la cible de déploiement de la ligne de production,
  * par l'application (des dépendances de l'applciation donc),
  * par l'un des composants de la ligne de production (un plugin maven, par exemple),
- 
+
 * `kytes-blown` fait usage de [Plup](https://pulpproject.org/), mais pas seulement, pour mettre en service et gérer le cycle de vie de repository linux, de repositories maven, de repository "docker-hub", de repository Scala
 * `kytes-blown` fait usage de Jgit et Git, pour mettre en service et gérer le cycle de vie de repositories Git , un peu comme [`git-meta`](http://opensource.twosigma.com/git-meta/#1), masi un peu différemment...
 
