@@ -206,11 +206,11 @@ He:
 * aggregates, persists and process tests results, and releases an end Quality Assurance reporting, based on computed test results data.
 * Any user with `qa` role on a production line, may also load the production line Quality Assurance Book, which contains every thing that affects Quality Assurance for the production line.
   In the Quality Assurance Book, you may find (edit and publish to [`kytes-blown`](#kytes-blown)) stuff like:
- * JUnit tests (a java projects source code),
- * Jenkins files, 
- * provision recipe for the test deployment target (which is a test parameter for load testing your application),
- * provision recipe for all the qa tools (which will run and compute the tests),
- * definition, configuration, and versionning (At every Build, Metrics set configuration is commited & pushed to a git repo standing for Quality management history) of the metrics used to asses quality of your application. Imagine there configuration scripts for your private elastic search installation...
+  * JUnit tests (a java projects source code),
+  * Jenkins files, 
+  * provision recipe for the test deployment targets (which is a test parameter for load testing your application),
+  * provision recipe for all the qa tools which will run and compute the tests. This includes purchasing servers, containers, or kubern8s service at `kytes-iaas`, for qa tools provisioning 
+  * definition, configuration, and versionning (At every Build, Metrics set configuration is commited & pushed to a git repo standing for Quality management history) of the metrics used to asses quality of your application. Imagine there configuration scripts for your private elastic search installation...
 ## kytes-pipeline-packager
 This service does all the packaging work.
 any pafckaging artefact is published to `kytes-blown`, on a proper repository ( a private docker hub, a maven repository such as artifactory)
