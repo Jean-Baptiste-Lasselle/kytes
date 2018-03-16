@@ -43,7 +43,7 @@ the property management system for the infrastructures of all tenants in kytes.
 Kytes Ground Control controls everything that happens in Kytes. Actualy when any user realises an action, ha asks GRound Control to do it for him.
 Ground Control's therefore in charge of Access Control, as well as Identity management.
 
-##  Kytes Ground Contrl client
+##  Kytes Ground Control's client
 
 Kytes offers a client, that works pretty mcuh like the Heroku client, meaning you can use it, starting by authenticating, and
 then you can command line manage your pipelines, applications development production lines, etc... It is called the 
