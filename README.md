@@ -51,7 +51,7 @@ Kytes Ground Control Client, or Ground Control Client, or Kytes client, as you w
 Ground Control Exposes a RESTful API with which you can execute any combination of commands you may execute with the Kytes Ground Control Client.
 
 Kytes Ground Control client' authentication method may be configured in Kytes configuration, and 
-will support integration with OAuth2, SAML, and 2/3 other popular and robust authentication methods.
+will support integration with Linux PAM (is there a Windows PAM somewhere...?), OAuth2, SAML, and 2/3 other popular and robust authentication methods.
 
  
 # kytes-infrastructure-manager
