@@ -70,19 +70,21 @@ composant JCA, encapsulé dans un conteneur docker embarquant une distribution W
 
 Pour chaque machine inventoriée, `kytes-aerodyne` vous propose de l'intégrer dans le schéma de la topologie de l'infrastructure
 
-# kytes-iaas
+`kytes-aerodyne` is Kytes component responsible for managing Kytes' own infrastructure:
+ * You install Kytes on a small machine,
+ * You start Kytes, it is said to be on bootstrap state. In that state, you cannot start using Kytes, it needs an infrastructure (a physical) to play with.
+ * You give Kytes an infrastructure to play with (I'll explain how to do that). That infrastructure might be reduced to the intiial machine you installed Kytes on.
+ * then Kytes uses that infrastructure to fully scale out to the entire infrastructure,
+ * Kytes aims at making you able draw all you can from the machines that you've got (until the boss answers yes for more pods on GCP),  while what you're doing on that infrastructure is developing / managing development of an application.
+ * Kytes orginated because I wanted real full bare metal Backup Restore procedure at home, for my personal development & experimental environments. Meaning I wanted a on clic backup to a brand new hardware machine. And hardware expenses reduction (know what you got, know what you need, buy what you need)
 
-Une fois que Kytes a pris le contrôle de l'infrastruture physique que vous avez mis à sa disposition, `kytes-iaas` met
-à la disposition des aux autres composants Kytes, une offre IAAS:
-
-À chaque fois qu'une demande de provisionning d'une infrastructure sera émise par un composant Kytes, c'est  `kytes-iaas` qui répondra à la demande.
-Ce sera par exemple le cas, lorsqu'une cible de déploiement sera conçue et construite pour une ligne de porduction 
-
+ 
+ 
 ## kytes-iaas-manager
 
 
-`kytes-iaas-manager` is responsible for setting up (provisioning ) the `kytes-iaas-provider` based on configuration.
-`kytes-iaas-manager` is responsible for operating the `kytes-iaas-provider` based on configuration:
+`kytes-iaas-manager` is responsible for setting up (provisioning) the `kytes-iaas-provider` based on configuration.
+`kytes-iaas-manager` is also responsible for oprating the `kytes-iaas-provider`:
 * managing all `kytes-iaas-provider` lifecycle :
  * updates,
  * upgrades,
@@ -90,7 +92,19 @@ Ce sera par exemple le cas, lorsqu'une cible de déploiement sera conçue et con
  * DRP (with automatic backups scheduling, and automatic restore procedures),
  * managing users (CRUD opeartions on users)
  
-All in all, `kytes-iaas-manager` does infrastructure management, Kytes' own infrastructure management
+All in all, `kytes-iaas-manager` does infrastructure management, Kytes' own infrastructure management, which why it is part of `kytes-aerodyne`
+
+
+# kytes-iaas
+
+Une fois que Kytes a pris le contrôle de l'infrastructure physique que vous avez mis à sa disposition, `kytes-iaas` met une offre IAAS
+à la disposition des aux autres composants Kytes:
+
+À chaque fois qu'une demande de provisionning d'une infrastructure est émise par un composant Kytes, c'est `kytes-iaas` qui répondra à la demande.
+Ce sera par exemple le cas, lorsqu'une cible de déploiement sera conçue et construite pour une ligne de production, ou lorsque Kytes provisionera
+des serveurs JMeter Jenkins, etc.. pour faire les builds au sein d'un pipeline
+
+
 ## kytes-iaas-provider
 
 Kytes acts with one IAAS provider. That provider may use hybrid cloud behind the scene, but it's still a one unique IAAS provider.
@@ -156,8 +170,8 @@ He:
  * definition, configuration, and versionning (At every Build, Metrics set configuration is commited & pushed to a git repo standing for Quality management history) of the metrics used to asses quality of your application. Imagine there configuration scripts for your private elastic search installation...
 ## kytes-packaging-service
 This service does all the packaging work.
-
-
+## kytes-deployment-service
+This service does all the application's deployment work.
 De plus lorsqu'un développeur fullstack voudra changer la recette de provisionning d'une cible de déploiement, ou en créer une nouvelle, 
 
 
