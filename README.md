@@ -255,17 +255,17 @@ recipes into subrecipes, so as to obtain a micro-service definition.
 
 * `kytes-blown` est un composoant qui permet de gérer des référentiels pour un ensemble de dépendances.
 * Dans `kytes-blown` toute  dépendance a (2 + N + P)  référentiels:
- * (1 référentiel)  le référentiel de versionning de son code source,
- * (1 référentiel)  le référentiel de toutes ses releases (ce sont donc des binaires), les releases poubvant être classées et gérées par périmètres (on a toujours un périmètre local lorsque l'on se fait une eptite release pour juste test à un niveau local, puis on a le périmètre  projet, pour tous les développeurs sur el projet,puis le périmètre organisation, pour tous les projets de l'organisation, pusi au-dessus le niveau utuilsateur, qui veut utuliser un même référentiel de bibliothèques pour toutes les organisations pourt lesquelles il travaille)
- * (N référentiels) le référentiel de chacune de ses recettes de provision d'une cible de déploiement, 
- * (P référentiels) le référentiel de versionning de chacune de ses recettes de déploiements. Chaque recette de déploiement est associée à une version d'une recette de provision d'une cible de déploiement,
+  * (1 référentiel)  le référentiel de versionning de son code source,
+  * (1 référentiel)  le référentiel de toutes ses releases (ce sont donc des binaires), les releases poubvant être classées et gérées par périmètres (on a toujours un périmètre local lorsque l'on se fait une eptite release pour juste test à un niveau local, puis on a le périmètre  projet, pour tous les développeurs sur el projet,puis le périmètre organisation, pour tous les projets de l'organisation, pusi au-dessus le niveau utuilsateur, qui veut utuliser un même référentiel de bibliothèques pour toutes les organisations pourt lesquelles il travaille)
+  * (N référentiels) le référentiel de chacune de ses recettes de provision d'une cible de déploiement, 
+  * (P référentiels) le référentiel de versionning de chacune de ses recettes de déploiements. Chaque recette de déploiement est associée à une version d'une recette de provision d'une cible de déploiement,
  
 Considérons par exemple une ligne de production mise en place et gérée par `Kytes`, pour un produit.
 
 Cette ligne de production possède un "univers de dépendances", et dans cet univers, l'on a des dépendances utilisées:
- * par la cible de déploiement de la ligne de production,
- * par l'application (des dépendances de l'applciation donc),
- * par l'un des composants de la ligne de production (un plugin maven, par exemple),
+  * par la cible de déploiement de la ligne de production,
+  * par l'application (des dépendances de l'applciation donc),
+  * par l'un des composants de la ligne de production (un plugin maven, par exemple),
 
 * `kytes-blown` fait usage de [Plup](https://pulpproject.org/), mais pas seulement, pour mettre en service et gérer le cycle de vie de repository linux, de repositories maven, de repository "docker-hub", de repository Scala
 * `kytes-blown` fait usage de Jgit et Git, pour mettre en service et gérer le cycle de vie de repositories Git , un peu comme [`git-meta`](http://opensource.twosigma.com/git-meta/#1), masi un peu différemment...
