@@ -54,7 +54,7 @@ Kytes Ground Control client' authentication method may be configured in Kytes co
 will support integration with Linux PAM (is there a Windows PAM somewhere...?), OAuth2, SAML, and 2/3 other popular and robust authentication methods.
 
  
-# kytes-infrastructure-manager
+# kytes-property-manager
 
 A software factory, and even more a solution to manage software factories, sits on a hardawre infrastructure.
 From another completely different point of view, hardware can be a direct dependency of a piece of software.
@@ -126,7 +126,7 @@ Pour chaque machine inventoriée, `kytes-aerodyne` vous propose de l'intégrer d
  * DRP (with automatic backups scheduling, and automatic restore procedures),
  * managing users (CRUD opeartions on users)
  
-All in all, `kytes-iaas-manager` does infrastructure management, Kytes' own infrastructure management, which why it is part of `kytes-infrastructure-manager`
+All in all, `kytes-iaas-manager` does infrastructure management, Kytes' own infrastructure management, which why it is part of `kytes-property-manager`
 
 
 # kytes-iaas
