@@ -114,7 +114,7 @@ composant JCA, encapsulé dans un conteneur docker embarquant une distribution W
 
 Pour chaque machine inventoriée, `kytes-aerodyne` vous propose de l'intégrer dans le schéma de la topologie de l'infrastructure
 
-
+<!--
 ## kytes-iaas-manager
 
 `kytes-iaas-manager` is responsible for setting up (provisioning) the `kytes-iaas-provider` based on configuration.
@@ -128,6 +128,7 @@ Pour chaque machine inventoriée, `kytes-aerodyne` vous propose de l'intégrer d
  
 All in all, `kytes-iaas-manager` does infrastructure management, Kytes' own infrastructure management, which why it is part of `kytes-property-manager`
 
+-->
 
 # kytes-iaas
 
