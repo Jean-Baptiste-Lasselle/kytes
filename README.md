@@ -22,8 +22,9 @@ This "twin-implementation" is an experience to put design patterns under pressur
 <!-- * Ability to deploy to GCP. -->
 <!-- * Ability to deploy to AWS. -->
 
-Like in the car industry, they design a production line for a given car release (lets forget or bear in mind car options lists), Kytes isthere to 
+Like in the car industry, they design a production line for a given car release (lets forget or bear in mind car options lists), Kytes is there to 
 assist you in designing, setting up, and operating production lines for projects, in an organization.
+Kyes' production lines are [`kytes-pipeline`](#kytes-pipelines)
 
 * Install Kytes on a machine, give Kytes hardware, then Kytes starts working for you.
 * Once installed,  Only one user is created in Kytes: the property manager.
