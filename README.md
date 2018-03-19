@@ -294,9 +294,9 @@ canaux de communication publics pour le projet.
       https://devcenter.heroku.com/articles/platform-api-quickstart
  
 * Pour automatiser le process  des pipelines aboutissant chez Heroku.
- 
+<!--
 * tentative plantée d'implémentation en Java que je peux regarder pour apprendre des erreurs: https://github.com/heroku/direct-to-heroku-client-java
- 
+ -->
 * Note intéressante: avec cette REST API Heroku, je vais donc pouvoir interooger la "marketpplace Heroku", afin de proposer de l'autocomplétion de Procfile. Mais aussi je vais pouvoir vérifier, au déploiement, que les add-ons spécifiés dans le Procfile sont bien tous existants dans la marketplace heroku).
  
  
