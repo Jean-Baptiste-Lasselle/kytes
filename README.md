@@ -5,7 +5,7 @@ First release code name will be "Hawking", as an aurevoir to the lately disappea
 
 # Kytes
 
-It's That I like going up in the air with the clouds, but I also like my feet right there on the ground, here.
+It's That I like going up in the air with the clouds, but I also like my feet right there on the ground.
 
 Kytes is a software factory exprience, with full devops behavior, and a fullstack approach.
 
