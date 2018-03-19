@@ -48,7 +48,7 @@ Ground Control is in charge of Identity management and Access Control.
 
 Kytes Ground Control exposes its features through a Web GUi, and a RESTful API used by a client called `kytes-cli`,
 `kytes-cli`, works pretty much like the Heroku client, meaning you can use it, starting by authenticating, and
-then you can command line any commadn that Ground Control gives you Access: manage your pipelines, applications development production lines, etc... It is called the 
+then you can command line any command that Ground Control gives you access to: manage your pipelines, applications development production lines, etc... It is called the 
 Kytes Ground Control Client, or Ground Control Client, or Kytes client, as you wish.
 Ground Control Exposes a RESTful API with which you can execute any combination of commands you may execute with the Kytes Ground Control Client.
 
