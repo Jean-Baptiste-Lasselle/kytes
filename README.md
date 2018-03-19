@@ -40,13 +40,14 @@ the property management system for the infrastructures of all tenants in kytes.
 # Kytes Ground Control
 
 ##  Kytes Ground Control
-Kytes Ground Control controls everything that happens in Kytes. Actualy when any user realises an action, ha asks GRound Control to do it for him.
-Ground Control's therefore in charge of Access Control, as well as Identity management.
+Kytes Ground Control is Kytes main dashboard.  It consists of a web GUI, and a client REST API. When any user realises an action, he asks Ground Control.
+Ground Control is in charge of Identity management and Access Control.
 
 ##  Kytes Ground Control's client
 
-Kytes offers a client, that works pretty mcuh like the Heroku client, meaning you can use it, starting by authenticating, and
-then you can command line manage your pipelines, applications development production lines, etc... It is called the 
+Kytes Ground Control exposes its features through a Web GUi, and a RESTful API used by a client called `kytes-cli`,
+`kytes-cli`, works pretty much like the Heroku client, meaning you can use it, starting by authenticating, and
+then you can command line any commadn that Ground Control gives you Access: manage your pipelines, applications development production lines, etc... It is called the 
 Kytes Ground Control Client, or Ground Control Client, or Kytes client, as you wish.
 Ground Control Exposes a RESTful API with which you can execute any combination of commands you may execute with the Kytes Ground Control Client.
 
@@ -206,7 +207,7 @@ He:
 * runs the test against the soure code of your application.
 * aggregates, persists and process tests results, and releases an end Quality Assurance reporting, based on computed test results data.
 * Any user with `qa` role on a production line, may also load the production line Quality Assurance Book, which contains every thing that affects Quality Assurance for the production line.
-  In the Quality Assurance Book, you may find (edit and publish to [`kytes-blown`](#kytes-blown)) stuff like:
+  In the Quality Assurance Book, you may find (edit and publish to [`kytes-beamer`](#kytes-beamer)) stuff like:
   * JUnit tests (a java projects source code),
   * Jenkins files, 
   * provision recipe for the test deployment targets (which is a test parameter for load testing your application),
@@ -214,7 +215,7 @@ He:
   * definition, configuration, and versionning of the metrics used to asses quality of your application.  At every Build, Metrics set configuration is commited & pushed to a git repo standing for Quality management versionning. Imagine there configuration scripts and custom modules for your private elastic search installation...
 ## kytes-pipeline-packager
 This service does all the packaging work.
-any pafckaging artefact is published to `kytes-blown`, on a proper repository ( a private docker hub, a maven repository such as artifactory)
+any pafckaging artefact is published to `kytes-beamer`, on a proper repository ( a private docker hub, a maven repository such as artifactory)
 ## kytes-pipeline-deployer
 This service does all the application's deployment work.
 De plus lorsqu'un développeur fullstack voudra changer la recette de provisionning d'une cible de déploiement, ou en créer une nouvelle, 
@@ -252,10 +253,10 @@ recipes into subrecipes, so as to obtain a micro-service definition.
 
 
 
-# kytes-blown
+# kytes-beamer
 
-* `kytes-blown` est un composoant qui permet de gérer des référentiels pour un ensemble de dépendances.
-* Dans `kytes-blown` toute  dépendance a (2 + N + P)  référentiels:
+* `kytes-beamer` est un composoant qui permet de gérer des référentiels pour un ensemble de dépendances.
+* Dans `kytes-beamer` toute  dépendance a (2 + N + P)  référentiels:
   * (1 référentiel)  le référentiel de versionning de son code source,
   * (1 référentiel)  le référentiel de toutes ses releases (ce sont donc des binaires), les releases poubvant être classées et gérées par périmètres (on a toujours un périmètre local lorsque l'on se fait une eptite release pour juste test à un niveau local, puis on a le périmètre  projet, pour tous les développeurs sur el projet,puis le périmètre organisation, pour tous les projets de l'organisation, pusi au-dessus le niveau utuilsateur, qui veut utuliser un même référentiel de bibliothèques pour toutes les organisations pourt lesquelles il travaille)
   * (N référentiels) le référentiel de chacune de ses recettes de provision d'une cible de déploiement, 
@@ -268,8 +269,8 @@ Cette ligne de production possède un "univers de dépendances", et dans cet uni
   * par l'application (des dépendances de l'applciation donc),
   * par l'un des composants de la ligne de production (un plugin maven, par exemple),
 
-* `kytes-blown` fait usage de [Plup](https://pulpproject.org/), mais pas seulement, pour mettre en service et gérer le cycle de vie de repository linux, de repositories maven, de repository "docker-hub", de repository Scala
-* `kytes-blown` fait usage de Jgit et Git, pour mettre en service et gérer le cycle de vie de repositories Git , un peu comme [`git-meta`](http://opensource.twosigma.com/git-meta/#1), masi un peu différemment...
+* `kytes-beamer` fait usage de [Plup](https://pulpproject.org/), mais pas seulement, pour mettre en service et gérer le cycle de vie de repository linux, de repositories maven, de repository "docker-hub", de repository Scala
+* `kytes-beamer` fait usage de Jgit et Git, pour mettre en service et gérer le cycle de vie de repositories Git , un peu comme [`git-meta`](http://opensource.twosigma.com/git-meta/#1), masi un peu différemment...
 
 # kytes-boutique
 
