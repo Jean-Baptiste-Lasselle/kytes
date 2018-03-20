@@ -41,12 +41,15 @@ the property management system for the infrastructures of all tenants in kytes.
 # Kytes Ground Control
 
 ##  Kytes Ground Control
-Kytes Ground Control is Kytes main dashboard.  It consists of a web GUI, and a client REST API. When any user realises an action, he asks Ground Control.
+`kytes-ground-control` is responsible for authentication & access control in Kytes.
+Kytes Ground Control exposes its features through a Web GUi, and a RESTful API.
+ It consists of a web GUI, and a command line client, and Ground Control itself.
+When any user realises an action, he has to be authenticated and granted authorization by Ground Control.
 Ground Control is in charge of Identity management and Access Control.
 
 ##  Kytes Ground Control's client
 
-Kytes Ground Control exposes its features through a Web GUi, and a RESTful API used by a client called `kytes-cli`,
+Kytes Ground control comes with a client called `kytes-cli`, which is just a command line client for the Kytes Ground Control 's RESTful API.
 `kytes-cli`, works pretty much like the Heroku client, meaning you can use it, starting by authenticating, and
 then you can command line any command that Ground Control gives you access to: manage your pipelines, applications development production lines, etc... It is called the 
 Kytes Ground Control Client, or Ground Control Client, or Kytes client, as you wish.
@@ -57,6 +60,19 @@ will support integration with Linux PAM (is there a Windows PAM somewhere...?), 
 
  
 # kytes-property-manager
+
+
+`kytes-property-manager` is Kytes component responsible for managing Kytes' own infrastructure:
+ * You install Kytes on a small machine,
+ * You start Kytes, it is said to be on bootstrap state. In that state, you cannot start using Kytes, it needs an infrastructure (a physical) to play with.
+ * You give Kytes an infrastructure to play with (I'll explain how to do that). That infrastructure might be reduced to the initial machine you installed Kytes on.
+ * then Kytes uses that infrastructure to fully scale out to the entire infrastructure,
+ * Kytes aims at making you able draw all you can from the machines that you've got (until the boss answers yes for more pods on GCP),  while what you're doing on that infrastructure is developing / managing development of an application.
+ * Kytes orginated because I wanted real full bare metal Backup Restore procedure at home, for my personal development & experimental environments. Meaning I wanted a on clic backup to a brand new hardware machine. And hardware expenses reduction (know what you got, know what you need, buy what you need)
+
+ 
+
+## kytes-aerodyne
 
 A software factory, and even more a solution to manage software factories, sits on a hardware infrastructure.
 From another completely different point of view, hardware can be a direct dependency of a piece of software.
@@ -72,18 +88,11 @@ In the below documentation for Kytes, I use a small specific terminology:
  
 Piece of cake, ain't it?
 
-## kytes-aerodyne
-
+Well, from that kind 
  
+
 `kytes-aerodyne` is Kytes component responsible for managing Kytes' own infrastructure:
  * You install Kytes on a small machine,
- * You start Kytes, it is said to be on bootstrap state. In that state, you cannot start using Kytes, it needs an infrastructure (a physical) to play with.
- * You give Kytes an infrastructure to play with (I'll explain how to do that). That infrastructure might be reduced to the intiial machine you installed Kytes on.
- * then Kytes uses that infrastructure to fully scale out to the entire infrastructure,
- * Kytes aims at making you able draw all you can from the machines that you've got (until the boss answers yes for more pods on GCP),  while what you're doing on that infrastructure is developing / managing development of an application.
- * Kytes orginated because I wanted real full bare metal Backup Restore procedure at home, for my personal development & experimental environments. Meaning I wanted a on clic backup to a brand new hardware machine. And hardware expenses reduction (know what you got, know what you need, buy what you need)
-
- 
  
 Une usine logicielle est un infrastructure IT.
 Et comme toute infrastructure IT, elle se construit en commençant par le matériel.
