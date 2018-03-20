@@ -52,13 +52,13 @@ then you can command line any command that Ground Control gives you access to: m
 Kytes Ground Control Client, or Ground Control Client, or Kytes client, as you wish.
 Ground Control Exposes a RESTful API with which you can execute any combination of commands you may execute with the Kytes Ground Control Client.
 
-Kytes Ground Control client' authentication method may be configured in Kytes configuration, and 
+Kytes Ground Control's client authentication method may be configured in Kytes configuration, and 
 will support integration with Linux PAM (is there a Windows PAM somewhere...?), OAuth2, SAML, and 2/3 other popular and robust authentication methods.
 
  
 # kytes-property-manager
 
-A software factory, and even more a solution to manage software factories, sits on a hardawre infrastructure.
+A software factory, and even more a solution to manage software factories, sits on a hardware infrastructure.
 From another completely different point of view, hardware can be a direct dependency of a piece of software.
 In the below documentation for Kytes, I use a small specific terminology:
 * I call here below a "dependency", anything you might call a piece of software, whether it be A U-boot version, A Linux Kernel Module, or a Java Vert-X component.
@@ -66,7 +66,7 @@ In the below documentation for Kytes, I use a small specific terminology:
 * Let `chantilly`, be a dependency: I say a dependency of `chantilly` is of degree zero, if it is directly referenced (mentioned) in the dependency list of `chantilly`, and cannot be infered from another dependency mentioned in the same list.
 * Let `chantilly`, be a dependency: For every positive & not null integer K, I say a dependency `D` of `chantilly` is of degree K + 1, if and only if `D` is a dependency of degree zero of dependency of degree K of `chantilly`. 
 * Let `chantilly`, be a dependency: The dependencies of degree zero of `chantilly` are:
- * `chantilly` 's source code,
+ * `chantilly` 's own source code,
  * `chantilly` deployments targets provisioning recipes,
  * `chantilly` deployment recipes
  
