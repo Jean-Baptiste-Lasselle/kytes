@@ -18,7 +18,7 @@ And hardware expenses reduction (know what you got, know what you need, buy what
 Kytes is a software factory exprience, with full devops behavior, and a fullstack approach.
 
 A full devops behavior: Kytes is designed for devops professionals, as a tool.
-A fullstack approach: If it takes modifying a bootloader to make an application even better, let's make it possible as easily as an 'mvn update'
+A fullstack approach: If it takes modifying a bootloader to make an application even better, let's make it possible as easily as an 'mvn update'. 
 And What about pulling A linux kernel module into a Vert-x Java Pipeline?
 
 This software factory project began March, 2018, and will be twin-develoed: From zero day on, Kyte will be implemented both in Java, and Scala language.
