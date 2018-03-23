@@ -15,16 +15,15 @@ Meaning I wanted:
 * a one-clic backup procedure on a running Kytes instance.
 * a one-clic, bare-metal restore procedure to a brand new hardware machine.
 * hardware dependency management:  Within the scope of dependency management, Kytes will offer same features, whether the dependency relation is between two hardware dependencies (to devices), or between a hardware dependency and a software dependency..
-* and hardware inventory management with obsolescence and tco monitoring (know what you got, know what you need, buy what you need).
+* and hardware inventory management with obsolescence and tco monitoring (aka wife's the ultimate ruthless boss, and wants to know how much all that really costs).
 
- 
+
 Kytes is a software factory exprience, with full devops behavior, and a fullstack approach.
-
 A full devops behavior: Kytes is designed for devops professionals, as a tool.
 A fullstack approach: If it takes modifying a bootloader to make an application even better, let's make it possible as easily as an 'mvn update'. 
 And What about pulling A linux kernel module into a Vert-x Java Pipeline?
 
-This software factory project began March, 2018, and will be twin-develoed: From zero day on, Kyte will be implemented both in Java, and Scala language.
+This software factory project began March, 2018, and will be implemented both in Java, and Scala language.
 This "twin-implementation" is an experience to put design patterns under pressure of the following requirements:
 * [Reactive Applications Requirements](https://www.reactivemanifesto.org)
 * Ability to deploy to Kubernetes.
@@ -35,13 +34,13 @@ This "twin-implementation" is an experience to put design patterns under pressur
 
 Like in the car industry, they design a production line for a given car release (lets forget or bear in mind car options lists), Kytes is there to 
 assist you in designing, setting up, and operating production lines for projects, in an organization.
-Kyes' production lines are [`kytes-pipeline`](#kytes-pipelines)
+Kytes' production lines are [`kytes-pipeline`](#kytes-pipelines)
 
 * Install Kytes on a machine, give Kytes hardware, then Kytes starts working for you.
 * Once installed,  Only one user is created in Kytes: the property manager.
 * You follow a security procedure to activate The initial property manager, which includes changing password before any operation.
 * Then you use the initial property manager to create other property managers, or organization accounts.
-* Property managers may create organisations, and there is at least one pmo user created with each organisation. 
+* Property managers may create organizations, and there is at least one pmo user created with each organization. 
 * The same user may be both Property manager and PMO, only a PMO, or only a Property Manager (that would be a sysadmin...). 
 * Only a PMO user may spawn new production lines for an organization he belongs to. The same user maybe a PMO for several organozations.
 * A PMO manages a production line, and may create developer users, and himself, is, a developer user, the PMO may also create an architect role, and himself is, an architect, but it's default, he can revoke from himself architect priviliges, to cease those to a dedicated architect user.
@@ -277,7 +276,7 @@ recipes into subrecipes, so as to obtain a micro-service definition.
 * `kytes-beamer` est un composoant qui permet de gérer des référentiels pour un ensemble de dépendances.
 * Dans `kytes-beamer` toute  dépendance a (2 + N + P)  référentiels:
   * (1 référentiel)  le référentiel de versionning de son code source,
-  * (1 référentiel)  le référentiel de toutes ses releases (ce sont donc des binaires), les releases poubvant être classées et gérées par périmètres (on a toujours un périmètre local lorsque l'on se fait une eptite release pour juste test à un niveau local, puis on a le périmètre  projet, pour tous les développeurs sur el projet,puis le périmètre organisation, pour tous les projets de l'organisation, pusi au-dessus le niveau utuilsateur, qui veut utuliser un même référentiel de bibliothèques pour toutes les organisations pourt lesquelles il travaille)
+  * (1 référentiel)  le référentiel de toutes ses releases (ce sont donc des binaires), les releases poubvant être classées et gérées par périmètres (on a toujours un périmètre local lorsque l'on se fait une eptite release pour juste test à un niveau local, puis on a le périmètre  projet, pour tous les développeurs sur el projet,puis le périmètre organization, pour tous les projets de l'organization, pusi au-dessus le niveau utuilsateur, qui veut utuliser un même référentiel de bibliothèques pour toutes les organizations pourt lesquelles il travaille)
   * (N référentiels) le référentiel de chacune de ses recettes de provision d'une cible de déploiement, 
   * (P référentiels) le référentiel de versionning de chacune de ses recettes de déploiements. Chaque recette de déploiement est associée à une version d'une recette de provision d'une cible de déploiement,
  
