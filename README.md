@@ -60,6 +60,7 @@ Kytes' production lines are [`kytes-pipeline`](#kytes-pipelines)
 * A PMO manages a production line, and may create developer users, and himself, is, a developer user, the PMO may also create an architect role, and himself is, an architect, but it's default, he can revoke from himself architect priviliges, to cease those to a dedicated architect user.
 Just like today, office buildings are operated and split-rented to different companies, Kytes is forst a property management system:
 the property management system for the infrastructures of all tenants in kytes.
+* For a given production line, there are two types of Kytes users: thos who use the production line, and, those who manage the production line (some do both).
 
  
 # Kytes Ground Control
