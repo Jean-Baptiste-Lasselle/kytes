@@ -37,14 +37,16 @@ assist you in designing, setting up, and operating production lines for projects
 Kytes' production lines are [`kytes-pipeline`](#kytes-pipelines)
 
 * Install Kytes on a machine, give Kytes hardware, then Kytes starts working for you.
-* Once installed,  Only one user is created in Kytes: the property manager.
-* You follow a security procedure to activate The initial property manager, which includes changing password before any operation.
-* Then you use the initial property manager to create other users, like property managers, or organization.
-* Property managers may create organizations, and there is at least one pmo user created with each organization. 
-* You create an organization as a property manager, and you do that to work on an software, for that organization.
-* With the default PMO user created with the new organisation, you then create a new production line. That new production line belongs to the organization, which may choose to switch pmos on a project.
-* The same user may be both Property manager and PMO, only a PMO, or only a Property Manager (that would be a sysadmin...). 
-* Only a PMO user may spawn new production lines for an organization he belongs to. The same user maybe a PMO for several organizations.
+* Once installed,  Only one user is created in Kytes: that user is both `top-manager` user and `property manager` user. 
+* Only one user may be `top-manager` user, and that `top-manager` user may delegate `property manager` role to another user.
+* You follow a security procedure to activate The initial property manager, which includes setting new password before any operation.
+* Then you use the initial property manager to create other users, like `property manager` users, pmos, architects, developers, or organization.
+* Property managers may create organizations, and there is one default pmo user created with each organization. 
+* You create an organization as a property manager, and you do that to work on an software and provide your deliveries to that organization.
+* With the default PMO user created with the new organisation, you then create a new production line. That new production line delivers to an organization. Kytes therefore considers organizations as customers of the `property-manager`.
+* and a only a property manager may replace current PMO of a production line, with a new PMO user.
+* The same user may be both Property manager and PMO, only a PMO, or only a Property Manager (that would be a ceo, or a business unit manager). 
+* Only a PMO user may spawn new production lines for an organization he works for. The same user maybe a PMO for several production lines of organizations.
 * A PMO manages a production line, and may create developer users, and himself, is, a developer user, the PMO may also create an architect role, and himself is, an architect, but it's default, he can revoke from himself architect priviliges, to cease those to a dedicated architect user.
 Just like today, office buildings are operated and split-rented to different companies, Kytes is forst a property management system:
 the property management system for the infrastructures of all tenants in kytes.
