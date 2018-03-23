@@ -41,6 +41,8 @@ Kytes' production lines are [`kytes-pipeline`](#kytes-pipelines)
 * You follow a security procedure to activate The initial property manager, which includes changing password before any operation.
 * Then you use the initial property manager to create other users, like property managers, or organization.
 * Property managers may create organizations, and there is at least one pmo user created with each organization. 
+* You create an organization as a property manager, and you do that to work on an software, for that organization.
+* With the default PMO user created with the new organisation, you then create a new production line. That new production line belongs to the organization, which may choose to switch pmos on a project.
 * The same user may be both Property manager and PMO, only a PMO, or only a Property Manager (that would be a sysadmin...). 
 * Only a PMO user may spawn new production lines for an organization he belongs to. The same user maybe a PMO for several organizations.
 * A PMO manages a production line, and may create developer users, and himself, is, a developer user, the PMO may also create an architect role, and himself is, an architect, but it's default, he can revoke from himself architect priviliges, to cease those to a dedicated architect user.
