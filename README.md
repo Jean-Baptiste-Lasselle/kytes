@@ -7,6 +7,14 @@ First release code name will be "Hawking", as an aurevoir to the lately disappea
 
 It's That I like going up in the air with the clouds, but I also like my feet right there on the ground.
 
+Kytes aims at making you able draw all you can from the machines that you've got (until the boss answers yes for more pods on GCP),  while what
+you're doing on that infrastructure is developing / managing lifecycle of an application, on behalf of an organization.
+
+Kytes orginated because I wanted real full bare metal Backup Restore procedure at home, for my personal projects.
+Meaning I wanted a one clic backup/restore to a brand new hardware machine.
+And hardware expenses reduction (know what you got, know what you need, buy what you need).
+
+ 
 Kytes is a software factory exprience, with full devops behavior, and a fullstack approach.
 
 A full devops behavior: Kytes is designed for devops professionals, as a tool.
@@ -29,7 +37,7 @@ Kyes' production lines are [`kytes-pipeline`](#kytes-pipelines)
 * Install Kytes on a machine, give Kytes hardware, then Kytes starts working for you.
 * Once installed,  Only one user is created in Kytes: the property manager.
 * You follow a security procedure to activate The initial property manager, which includes changing password before any operation.
-* Then you use the initial property manager to create other property managers, or organisation accounts.
+* Then you use the initial property manager to create other property managers, or organization accounts.
 * Property managers may create organisations, and there is at least one pmo user created with each organisation. 
 * The same user may be both Property manager and PMO, only a PMO, or only a Property Manager (that would be a sysadmin...). 
 * Only a PMO user may spawn new production lines for an organization he belongs to. The same user maybe a PMO for several organozations.
@@ -67,10 +75,8 @@ will support integration with Linux PAM (is there a Windows PAM somewhere...?), 
  * You start Kytes, it is said to be on bootstrap state. In that state, you cannot start using Kytes, it needs an infrastructure (a physical) to play with.
  * You give Kytes an infrastructure to play with (I'll explain how to do that). That infrastructure might be reduced to the initial machine you installed Kytes on.
  * then Kytes uses that infrastructure to fully scale out to the entire infrastructure,
- * Kytes aims at making you able draw all you can from the machines that you've got (until the boss answers yes for more pods on GCP),  while what you're doing on that infrastructure is developing / managing development of an application.
- * Kytes orginated because I wanted real full bare metal Backup Restore procedure at home, for my personal development & experimental environments. Meaning I wanted a on clic backup to a brand new hardware machine. And hardware expenses reduction (know what you got, know what you need, buy what you need)
+ * and now Kytes changes state from bootstrap to operational, and you can start using Kytes to fullstack-manage softwares for an organization.
 
- 
 
 ## kytes-aerodyne
 
