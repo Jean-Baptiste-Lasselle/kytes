@@ -28,7 +28,7 @@ This "twin-implementation" is an experience to put design patterns under pressur
 * [Reactive Applications Requirements](https://www.reactivemanifesto.org)
 * Ability to deploy to Kubernetes.
 * Ability to deploy to Openstack (through heat).
-* Ability to deploy using chef.io (release management of chef.io cookbooks, ansible playbooks).
+* Ability to deploy using well know tools like chef.io and ansible (release management of chef.io cookbooks, ansible playbooks).
 <!-- * Ability to deploy to GCP. -->
 <!-- * Ability to deploy to AWS. -->
 
@@ -39,10 +39,10 @@ Kytes' production lines are [`kytes-pipeline`](#kytes-pipelines)
 * Install Kytes on a machine, give Kytes hardware, then Kytes starts working for you.
 * Once installed,  Only one user is created in Kytes: the property manager.
 * You follow a security procedure to activate The initial property manager, which includes changing password before any operation.
-* Then you use the initial property manager to create other property managers, or organization accounts.
+* Then you use the initial property manager to create other users, like property managers, or organization.
 * Property managers may create organizations, and there is at least one pmo user created with each organization. 
 * The same user may be both Property manager and PMO, only a PMO, or only a Property Manager (that would be a sysadmin...). 
-* Only a PMO user may spawn new production lines for an organization he belongs to. The same user maybe a PMO for several organozations.
+* Only a PMO user may spawn new production lines for an organization he belongs to. The same user maybe a PMO for several organizations.
 * A PMO manages a production line, and may create developer users, and himself, is, a developer user, the PMO may also create an architect role, and himself is, an architect, but it's default, he can revoke from himself architect priviliges, to cease those to a dedicated architect user.
 Just like today, office buildings are operated and split-rented to different companies, Kytes is forst a property management system:
 the property management system for the infrastructures of all tenants in kytes.
