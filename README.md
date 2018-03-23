@@ -11,8 +11,11 @@ Kytes aims at making you able draw all you can from the machines that you've got
 you're doing on that infrastructure is developing / managing lifecycle of an application, on behalf of an organization.
 
 Kytes orginated because I wanted real full bare metal Backup Restore procedure at home, for my personal projects.
-Meaning I wanted a one clic backup/restore to a brand new hardware machine.
-And hardware expenses reduction (know what you got, know what you need, buy what you need).
+Meaning I wanted:
+* a one-clic backup procedure on a running Kytes instance.
+* a one-clic, bare-metal restore procedure to a brand new hardware machine.
+* hardware dependency management:  Within the scope of dependency management, Kytes will offer same features, whether the dependency relation is between two hardware dependencies (to devices), or between a hardware dependency and a software dependency..
+* and hardware inventory management with obsolescence and tco monitoring (know what you got, know what you need, buy what you need).
 
  
 Kytes is a software factory exprience, with full devops behavior, and a fullstack approach.
