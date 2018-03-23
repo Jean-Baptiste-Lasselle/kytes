@@ -7,21 +7,29 @@ First release code name will be "Hawking", as an aurevoir to the lately disappea
 
 It's That I like going up in the air with the clouds, but I also like my feet right there on the ground.
 
-Kytes aims at making you able draw all you can from the machines that you've got (until the boss answers yes for more pods on GCP),  while what
-you're doing on that infrastructure is developing / managing lifecycle of an application, on behalf of an organization.
-
 Kytes orginated because I wanted real full bare metal Backup Restore procedure at home, for my personal projects.
 Meaning I wanted:
 * a one-clic backup procedure on a running Kytes instance.
 * a one-clic, bare-metal restore procedure to a brand new hardware machine.
-* hardware dependency management:  Within the scope of dependency management, Kytes will offer same features, whether the dependency relation is between two hardware dependencies (to devices), or between a hardware dependency and a software dependency..
 * and hardware inventory management with obsolescence and tco monitoring (aka wife's the ultimate ruthless boss, and wants to know how much all that really costs).
 
+One of Kytes' aims is making you able draw all you can from the machines that you've got (until the boss answers yes for more pods on GCP),  while what
+you're doing on that infrastructure is developing / managing lifecycle of an application, on behalf of an organization.
 
-Kytes is a software factory exprience, with full devops behavior, and a fullstack approach.
+
+Soon, Kytes became a software factory experience, a tool I use to test (IT related) ideas and assertions.
+I test my own assumptions and various assertions I find on the web.
+
+
+and I designed Kytes with full devops behavior, and a fullstack approach.
+
 A full devops behavior: Kytes is designed for devops professionals, as a tool.
+
 A fullstack approach: If it takes modifying a bootloader to make an application even better, let's make it possible as easily as an 'mvn update'. 
-And What about pulling A linux kernel module into a Vert-x Java Pipeline?
+And What about pulling A linux kernel module into a Vert-x Java Pipeline? Within the scope of dependency management, Kytes will offer same features, whether the dependency relation is between two hardware dependencies (to devices), or between a hardware dependency and a software dependency..
+
+
+
 
 This software factory project began March, 2018, and will be implemented both in Java, and Scala language.
 This "twin-implementation" is an experience to put design patterns under pressure of the following requirements:
