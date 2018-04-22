@@ -345,6 +345,39 @@ canaux de communication publics pour le projet.
  
 * Doc de la REST API Heroku: https://devcenter.heroku.com/articles/platform-api-quickstart 
 
+## Une indication pour l'intégration aux IDE
+
+Pourquoi pas essayer d'utiliser electron, ce qui permettra de totu développer sous la forme d'une application AngluarJS /ReactJS
+Par exemple pour du plugin eclipse, et derrière
+
+```
+Machisté Quintana, Software Engineer chez
+Slack, applications
+avec Electron.
+
+On nous rappelle le principe d'Electron. L'idée
+est d'embarquer un viewer Web dans une application
+de type client lourd. Puis ensuite de
+faire tout notre code dans du JavaScript. Ce
+même JavaScript peut utiliser des dépendances
+qui lui permettront d'avoir l'accès à des composantes
+systèmes. Electron permet de donner
+des supers pouvoirs à une application
+JavaScript. Pour avoir une application Electron
+performante, ils ont développé une couche
+« electron-compile ». L'intérêt de cette couche
+permet de transpiler à la volée les fichiers
+JavaScript utilisés. Si l'on fait du ReactJS avec les
+dernières normes JavaScript et les includes, le
+JavaScript sera transpilé dans une version plus
+simple qui, elle sera interprétée par Electron.
+Mais cela pose la question des performances
+pour cette techno. Il nous explique que le code
+transpilé est gardé en cache. Tant que l'on ne
+change pas le code du fichier, le compilateur utilise
+la version en cache.
+```
+
 
 ## Un squelette d'implémentation
 
