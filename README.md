@@ -256,6 +256,10 @@ N développeurs, N > 2, au moins 3 donc, l'idée est:
 * On fait le merge de la branche du 1 er développeur, puis le merge de la branche du second développeur, et enfin on merge la troisième branche vers le master.
 * Ou alors la troisième branche reste jusqu'à ce qu'on y merge tous les développeurs. Quant on a fait les tests sur la dernière version de cette branche de merge, on la merge vers le master. Et avec ça, on a que des release sur la master, aucune version intermédiraire, les versions intermédiaires restent sur une branche paralèlle au master.
 * Et dans ce process piloté de gestion d'équipe pour les merges, comparer ce que fais gerrit, et essayer d'intégrer gerrit (qui propose d'autres fonctionalités, comme lancer les tests sur la version finale de branche, mais en fait ça peut se faire avec Gitlab aussi....)
+-> à propos de Gerrit:
+Il est distribué sous forme de war, donc facile à tester, il y a certianement une distribution docker aussi.
+Ce qui ne me convient là pas, c'est qu'il implémente un process pour le code review, mais il assume aussi l'hébergmeent des repos Git.
+Il faut séparer le fournisseur de repos Git, du composant gérant le code review. Par exemple, .... Oh non avec mon process, j'utilise bien, même siu je fais des branches, le repo du code source de l'applciation elle-même.
 
 ## kytes-pipeline-qa
 This guy can run tests and analysis with Fossology, Checkstyle, JMeter, Jenkins, Junit (and al friends and cousins mockitos), Netflix' Simian army, with full metrics reporting management.
