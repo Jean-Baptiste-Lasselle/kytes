@@ -135,7 +135,7 @@ Kytes aura la capacité à se déployer:
     * Digital Ocean
     * Rackspace
     * Quelques gestionnaires de clouds Hybrides
-Cette restriction quant aux machines virtuelles, parceque Kytes doit en quel sorte prendre un contrôle total des machines primaires sur lesquelles il s'installe.
+Cette restriction quant aux machines virtuelles, parce que Kytes doit en quelque sorte prendre un contrôle total des machines primaires sur lesquelles il s'installe.
 Une idée à développer: Kytes porend toutes les machines virtuelles qu'on lui fournit, puis il les tests afin de faire un rapport pour chacune, précisant si oui ou non Kytes peut fairer quelquechose de cette machine, et si non, alors il donne les éléments précis de tests, montrant pourquoi il ne peut en aucun cas utilsier cette machine.
 
 Dans tout les cas, l'infrastructure provisionnée au départ, devra être "enrollée".
