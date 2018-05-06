@@ -291,7 +291,7 @@ Pour la virtualisation, Kytes peut utiliser différents providers:
 * VirutalBox + VDE + VyOS :
   * Dans le cas de cette configuration, un premier réseau physique virtualbox sera utilsié pour le PXE boot des hôtes. Ce réseau sera de type "Internal Network", pour être physiquement séparé du réseau physique des machines hôtes de virtualisation. Ce réseau est dédié à l'administration de l'ensemble des VMs Kytes.
   * Un deuxième  réseau (physique) "internal network" VirtualBox, contiendra toutes les VMs mises à disposition de l'utilisateur IAAS. Il comprendra des hôtes, des switchs VDE, et des routeurs virtuels VyOS.
-  * Un troisième réseau (physique), de type "Bridged Network" VirtualBOx, sera bridgé au réseau local des machines hôtes de virtualisation, contiendra un ou plusieurs routeurs VyOS et firewall firewalld, permettant le routage entre réseau extérieur, et réseaux gérés par le provider IAAS.
+  * Un troisième réseau (physique), de type "Bridged Network" VirtualBox, sera bridgé au réseau local des machines hôtes de virtualisation. Il contiendra un ou plusieurs routeurs VyOS et firewall firewalld, permettant le routage entre réseau extérieur, et réseaux gérés par le provider IAAS.
 * OpenStack avec Neutron DVR pour optimiser les aller retour entre le serveur neutron et les compute nodes. (+opendaylight)
 * Kubernetes + flanneld + VXLANs
 
