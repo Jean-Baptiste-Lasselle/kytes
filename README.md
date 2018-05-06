@@ -286,11 +286,11 @@ recipes into subrecipes, so as to obtain a micro-service definition.
 
 # kytes IAAS
 
-Pour la virtualisation, Kytes peut utiliser différents providers.
-KVM + VDE + VyOS
-VirutalBox + VDE + VyOS
-OpenStack avec Neutron DVR pour optimiser les aller retoru entre le sereuir neutron et les compute nodes. (+opendaylight)
-Kubernetes + flanneld + VXLANs
+Pour la virtualisation, Kytes peut utiliser différents providers:
+* KVM + VDE + VyOS 
+* VirutalBox + VDE + VyOS
+* OpenStack avec Neutron DVR pour optimiser les aller retoru entre le sereuir neutron et les compute nodes. (+opendaylight)
+* Kubernetes + flanneld + VXLANs
 
 ## TODO: VDE et virtualbox multi-hôtes
 
@@ -410,6 +410,8 @@ Oui, il fauitdrait intégrert une super commande kiffante utilksiable depusi té
 la commande permet d'éteindre son pc à distance pour partir dtotu dde suite, et 
 la commande custom que j'implémenterai, non seulemùent éteindrai le PC, mais le re-démarrerai
 avec un boot sur l'hôte Linux qui se met alors à disposition du provider IAAS Kytes
+
+cf. aussi, les docuementations:
 
 
 # kytes-beamer
