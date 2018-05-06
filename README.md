@@ -247,6 +247,16 @@ In a Kytes pipeline, the git repo used for source code versionning management is
 The Kytes clients exists as a maven plugin, and a m2e extension to use the Kytes plugin within eclipse.
 
 ## kytes-pipeline-scm
+
+Avec ce module, j'aurais notamment la gestion des N*-merges : 
+N développeurs, N > 2, au moins 3 donc, l'idée est:
+* deux dévveloppeurs partent sur la résolution de 2 issues différentes, avec une nouvelle branche chacun, en partant de la même version de master (la dernière release).
+* ils doivent merger avec le master au plus tôt
+* Pour cela, dès que les 2 ont terminé (dans N*, dès que les 2 premiers développeurs ont terminé), on créée une troisième branche partant de la dernière version du master, qu'il s'agisse d'une release, ou d'une versionde merge intermédiaire (toutes les versions du master ne sont pas des releases, certaines sont des merges intermédiraires)
+* On fait le merge de la branche du 1 er développeur, puis le merge de la branche du second développeur, et enfin on merge la troisième branche vers le master.
+* Ou alors la troisième branche reste jusqu'à ce qu'on y merge tous les développeurs. Quant on a fait les tests sur la dernière version de cette branche de merge, on la merge vers le master. Et avec ça, on a que des release sur la master, aucune version intermédiraire, les versions intermédiaires restent sur une branche paralèlle au master.
+* Et dans ce process piloté de gestion d'équipe pour les merges, comparer ce que fais gerrit, et essayer d'intégrer gerrit (qui propose d'autres fonctionalités, comme lancer les tests sur la version finale de branche, mais en fait ça peut se faire avec Gitlab aussi....)
+
 ## kytes-pipeline-qa
 This guy can run tests and analysis with Fossology, Checkstyle, JMeter, Jenkins, Junit (and al friends and cousins mockitos), Netflix' Simian army, with full metrics reporting management.
 He spawns you a quality manager for each of your product lines.
