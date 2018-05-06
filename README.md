@@ -284,6 +284,132 @@ Kytes will offer simple and very handy GUI tools (and Kytes Ground Control API e
 recipes into subrecipes, so as to obtain a micro-service definition.
 
 
+# kytes IAAS
+
+Pour la virtualisation, Kytes peut utiliser différents providers.
+KVM + VDE + VyOS
+VirutalBox + VDE + VyOS
+OpenStack avec Neutron DVR pour optimiser les aller retoru entre le sereuir neutron et les compute nodes. (+opendaylight)
+Kubernetes + flanneld + VXLANs
+
+## TODO: VDE et virtualbox multi-hôtes
+
+Mettre en place une solution de déploiement sur hôtes Windows:
+* L'intention est de permettre d'exploiter des machines trouvées dans un lieu de mission dans lequel on se trouve parachuté, et il y a un manque de ressources, ou une incapacité à fournir du IAAS
+* Sur chaque machine Windows, il faut trouver un moyen de faire une installation d'une distribution linux (dual boot): parce que VDE ne peut fonctionner que sur une machine Linux.
+* L'idée est aussi de permettre de construitre un "Internal NEtwork" au sens de VirtualBOx, et pouvoir connecter dans ce même réseau, 2 VMs VirtualBOx sur 2 machine physiques différentes.
+* Pour arrvier à nos fins, on utilisera [VDE](http://wiki.v2.cs.unibo.it/wiki/index.php?title=Introduction#The_Virtual_Square)
+* Et qlq éléments pour connecter 2 VMs sur deux machines physiques différentes:
+```
+
+http://wiki.v2.cs.unibo.it/wiki/index.php?title=VDE_Basic_Networking
+et dans le manuel VirtualBox, Ctrl + F "VDE Networking":
+https://www.virtualbox.org/manual/ch06.html
+
+Virtual Distributed Ethernet (VDE[32]) is a flexible, virtual network infrastructure system, spanning across multiple hosts in a secure way. It allows for L2/L3 switching, including spanning-tree protocol, VLANs, and WAN emulation. It is an optional part of VirtualBox which is only included in the source code.
+
+The basic building blocks of the infrastructure are VDE switches, VDE plugs and VDE wires which inter-connect the switches.
+
+The VirtualBox VDE driver has one parameter:
+
+VDE network
+
+    The name of the VDE network switch socket to which the VM will be connected.
+
+The following basic example shows how to connect a virtual machine to a VDE switch:
+
+    Create a VDE switch:
+
+    vde_switch -s /tmp/switch1
+
+    Configuration via command-line:
+
+    VBoxManage modifyvm "VM name" --nic<x> generic
+
+    VBoxManage modifyvm "VM name" --nicgenericdrv<x> VDE
+
+    To connect to automatically allocated switch port, use:
+
+    VBoxManage modifyvm "VM name" --nicproperty<x> network=/tmp/switch1
+
+    To connect to specific switch port <n>, use:
+
+    VBoxManage modifyvm "VM name" --nicproperty<x> network=/tmp/switch1[<n>]
+
+    The latter option can be useful for VLANs.
+
+    Optionally map between VDE switch port and VLAN: (from switch CLI)
+
+    vde$ vlan/create <VLAN>
+
+    vde$ port/setvlan <port> <VLAN>
+
+VDE is available on Linux and FreeBSD hosts only. It is only available if the VDE software and the VDE plugin library from the VirtualSquare project are installed on the host system[33]. For more information on setting up VDE networks, please see the documentation accompanying the software.[34]
+
+
+
+
+je suis aller voir la doc de VDE, et bingo, il y a une recette simple:
+
+    sur chaque hôte, il faut créer un switch virtuel
+    il faut connecter les 2 switch virtuels à l'aide de la reccette indiquée ci-dessous
+    il faut connecter chaque VM au switch virtuel VDE qui se trouve sur le même hôte qu'elle
+
+
+
+ http://wiki.virtualsquare.org/wiki/index.php/VDE_Basic_Networking
+
+
+
+Connecting VDE-switched together
+Step 1: run several switches
+
+On the same computer you can run several switches, provided they have different names:
+
+$ vde_switch -s /tmp/switch1
+$ vde_switch -s /tmp/switch2
+
+It is possible to run switches on different computers:
+
+host1$ vde_switch -s /tmp/switch
+host2$ vde_switch -s /tmp/switch
+
+Step2: connect them together
+
+It is straightforward simple:
+
+$ dpipe vde_plug /tmp/switch1 = vde_plug /tmp/switch2
+
+dpipe is a double pipe: the two commands separated by a = sign are mutually interconnected: the output of the first is the input for the second and viceversa. In this way the two plugs plugged-in the two switches exchange their packets...
+
+If the switch are running on different computers we need a wire, i.e. a program able to forward a stream connection from a computer to the other. ssh is the simplest (safe and quite fast) example
+
+host1$ dpipe vde_plug /tmp/switch = ssh host2 vde_plug /tmp/switch
+
+when the switch are connected all the virtual (and real) machines connected to one can communicate with those connected to the other. It has exactly the same effect for real (physical, not-virtual) ethernet of connecting a cross-cable between two switches.
+
+Obviously several switches can be conntected in the same way. Remember that all the problems of the Ethernet do exist in the virtual Ethernet. For example cycles on the network are allowed only if the fast spanning tree protocol is enable otherwise the packets loop on the network saturating the channels.
+
+
+
+Bon  très important aussi, voir comment faire le monitoring du réseau, et les trace dumps, ce qui est indiqué en détail dans la page:
+
+imprimée en PDF ci -jointe
+
+et il y a même de quoi voir les côtés performance.
+
+```
+
+Seul problème, VDE sur Windows, c'est pas possible ... D'où l'idée du dual boot, mais le problème est que
+l'on bootera alors soit sur windows, soit sur linux, mais le développeur ne pourra pas continuer à utiliser
+son poste windows... hum.... il y a à réfléchir...
+Ok, il y aurait quand même quelque chose à tirer de ce côté: que dès que le dévelopepur est parti des
+bureaux, pouf le PC re boot sous Linux et se rend disponible au provider IAAS de Kytes.
+Si je fais ça sur des postyes assez distribuiés....
+Oui, il fauitdrait intégrert une super commande kiffante utilksiable depusi téléphone mobile:
+la commande permet d'éteindre son pc à distance pour partir dtotu dde suite, et 
+la commande custom que j'implémenterai, non seulemùent éteindrai le PC, mais le re-démarrerai
+avec un boot sur l'hôte Linux qui se met alors à disposition du provider IAAS Kytes
 
 
 # kytes-beamer
