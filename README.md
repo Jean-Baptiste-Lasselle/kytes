@@ -308,6 +308,12 @@ Thus, when splitting a recipe, you split into chained executions, each execution
 Kytes will offer simple and very handy GUI tools (and Kytes Ground Control API equivalent features) to split 
 recipes into subrecipes, so as to obtain a micro-service definition.
 
+## TODO: kytes pourrait essayer d'utiliser https://www.bazel.build/
+
+Pour optimiser les builds et gérer le référentirel kytes-beamer
+
+
+
 
 # kytes IAAS
 
