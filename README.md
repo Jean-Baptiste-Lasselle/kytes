@@ -121,13 +121,27 @@ Une usine logicielle est un infrastructure IT.
 Et comme toute infrastructure IT, elle se construit en commençant par le matériel.
 
 Kytes aura la capacité à se déployer:
+<!--
 * à partir d'une infrastructure "bare-metal": à partir de machines "nues", n'ayant aucun OS installé.
 * à partir d'une infrastructure provisionnée par une offre IAAS privée (Openstack, openshift, un simple petit VirutalBox installé sur un gros PC...), publique (GCP, AWS), ou hybride.
+* À partir d'une ensemble de machines, certaines étant virtuelles, les autres étant physiques. Les machines virtuelles ici fournies, le sont par un provider qui n'est PAS le provider IAAS Kytes.
+-->
 
-Dans les deux cas, l'infrastructure provisionnée au départ, devra être "enrollée".
+* À partir d'une ensemble de machines, certaines étant virtuelles, les autres étant physiques.
+* Dans et ensemble initial il est possible d'inclure des machiens virtuelles, si et seulement is elles sont provisionnées par un provider supporté:
+  * Openstack avec [openstack ironic on nova compute](https://docs.openstack.org/ironic/pike/install/configure-pxe.html)
+  * Bientôt:
+    * Amazon AWS
+    * Digital Ocean
+    * Rackspace
+    * Quelques gestionnaires de clouds Hybrides
+Cette restriction quant aux machines virtuelles, parceque Kytes doit en quel sorte prendre un contrôle total des machines primaires sur lesquelles il s'installe.
+Une idée à développer: Kytes porend toutes les machines virtuelles qu'on lui fournit, puis il les tests afin de faire un rapport pour chacune, précisant si oui ou non Kytes peut fairer quelquechose de cette machine, et si non, alors il donne les éléments précis de tests, montrant pourquoi il ne peut en aucun cas utilsier cette machine.
+
+Dans tout les cas, l'infrastructure provisionnée au départ, devra être "enrollée".
 
 Les deux premières fonctions qui seront assurées par `kytes-aerodyne`, seront donc:
-* l' "enrollement" des machines physiques.
+* l' "enrollement" des machines physiques (et éventuellement virtuelles).
 * la gestion de l'inventaire des machines physiques.
 
 Ces fonctions seront assurées par un composant nommé `kytes-aerodyne`, dont la première version reposera sur le fonctionnement d'un
